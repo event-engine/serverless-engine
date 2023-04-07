@@ -1,0 +1,11 @@
+import {Command} from "@app/messaging/command";
+import {handle} from "@app/infrastructure/commandHandling";
+import {<%= className %>} from "@app/<%= service.fileName %>/model/<%= aggregate.fileName %>/commands/<%= fileName %>";
+import {handle<%= className %>} from "@app/<%= service.fileName %>/model/<%= aggregate.fileName %>/handlers/handle-<%= fileName %>";
+import <%= aggregate.propertyName %>Repository from "@app/<%= service.fileName %>/model/<%= aggregate.fileName %>/repository";
+
+const dispatch = async (command: Command<<%= className %>>): Promise<boolean> => {
+  return handle(command, handle<%= className %>, <%= aggregate.propertyName %>Repository, <%= toJSON(newAggregate) %>);
+}
+
+export default dispatch;

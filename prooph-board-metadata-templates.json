@@ -1,0 +1,64 @@
+{
+  "command": {
+    "templateType": "json",
+    "template": "{\n  \"newAggregate\": false,\n  \"shorthand\": true,\n  \"schema\": {}\n}",
+    "templateSchema": "{\n\t\"type\": \"object\",\n\t\"properties\": {\n\t\t\"newAggregate\": {\n\t\t\t\"type\": \"boolean\"\n\t\t},\n\t\t\"shorthand\": {\n\t\t\t\"type\": \"boolean\",\n\t\t\t\"default\": true\n\t\t},\n\t\t\"schema\": {\n\t\t\t\"type\": \"object\"\n\t\t},\n\t\t\"uiSchema\": {}\n\t},\n\t\"required\": [\n\t\t\"newAggregate\",\n\t\t\"schema\"\n\t]\n}"
+  },
+  "hotSpot": {
+    "templateType": "json",
+    "template": "{\n  \n}\n"
+  },
+  "boundedContext": {
+    "templateType": "json",
+    "template": "{\n  \n}\n"
+  },
+  "policy": {
+    "templateType": "json",
+    "template": "{\n  \"streams\": []\n}\n"
+  },
+  "ui": {
+    "templateType": "json",
+    "template": "{\n  \"topLevel\": true,\n  \"route\": \"\",\n  \"menuIcon\": \"\",\n  \"menuLabel\": \"\"\n}",
+    "templateSchema": "{\n\t\"oneOf\": [\n\t\t{\n\t\t\t\"type\": \"object\",\n\t\t\t\"properties\": {\n\t\t\t\t\"topLevel\": {\n\t\t\t\t\t\"type\": \"boolean\",\n\t\t\t\t\t\"default\": true\n\t\t\t\t},\n\t\t\t\t\"route\": {\n\t\t\t\t\t\"type\": \"string\"\n\t\t\t\t},\n\t\t\t\t\"menuIcon\": {\n\t\t\t\t\t\"type\": \"string\"\n\t\t\t\t},\n\t\t\t\t\"menuLabel\": {\n\t\t\t\t\t\"type\": \"string\"\n\t\t\t\t}\n\t\t\t},\n\t\t\t\"required\": [\n\t\t\t\t\"topLevel\",\n\t\t\t\t\"route\"\n\t\t\t]\n\t\t},\n\t\t{\n\t\t\t\"type\": \"object\",\n\t\t\t\"properties\": {\n\t\t\t\t\"topLevel\": {\n\t\t\t\t\t\"type\": \"boolean\",\n\t\t\t\t\t\"default\": false\n\t\t\t\t},\n\t\t\t\t\"route\": {\n\t\t\t\t\t\"type\": \"string\"\n\t\t\t\t},\n\t\t\t\t\"routeParams\": {\n\t\t\t\t\t\"type\": \"array\",\n\t\t\t\t\t\"items\": {\n\t\t\t\t\t\t\"type\": \"string\"\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t},\n\t\t\t\"required\": [\n\t\t\t\t\"topLevel\",\n\t\t\t\t\"route\",\n\t\t\t\t\"routeParams\"\n\t\t\t]\n\t\t}\n\t]\n}"
+  },
+  "role": {
+    "templateType": "json",
+    "template": "{\n  \n}\n"
+  },
+  "feature": {
+    "templateType": "json",
+    "template": "{\n  \"service\": \"string\"\n}",
+    "templateSchema": "{\n\t\"type\": \"object\",\n\t\"properties\": {\n\t\t\"service\": {\n\t\t\t\"type\": \"string\"\n\t\t}\n\t}\n}"
+  },
+  "icon": {
+    "templateType": "json",
+    "template": "{\n  \n}\n"
+  },
+  "freeText": {
+    "templateType": "json",
+    "template": "{\n  \n}\n"
+  },
+  "externalSystem": {
+    "templateType": "json",
+    "template": "{\n  \n}\n"
+  },
+  "event": {
+    "templateType": "json",
+    "template": "{\n  \"shorthand\": true,\n  \"schema\": {}\n}",
+    "templateSchema": "{\n\t\"type\": \"object\",\n\t\"properties\": {\n\t\t\"shorthand\": {\n\t\t\t\"type\": \"boolean\",\n\t\t\t\"default\": true\n\t\t},\n\t\t\"schema\": {\n\t\t\t\"type\": \"object\"\n\t\t}\n\t},\n\t\"required\": [\n\t\t\"schema\"\n\t]\n}"
+  },
+  "document": {
+    "templateType": "json",
+    "template": "{\n  \"shorthand\": true,\n  \"ns\": \"/\",\n  \"schema\": {},\n  \"querySchema\": {}\n}",
+    "templateSchema": "{\n\t\"type\": \"object\",\n\t\"properties\": {\n\t\t\"shorthand\": {\n\t\t\t\"type\": \"boolean\",\n\t\t\t\"default\": true\n\t\t},\n\t\t\"ns\": {\n\t\t\t\"type\": \"string\"\n\t\t},\n\t\t\"aggegateState\": {\n\t\t\t\"type\": \"boolean\"\n\t\t},\n\t\t\"schema\": {\n\t\t\t\"type\": [\"object\", \"string\"]\n\t\t},\n\t\t\"querySchema\": {\n\t\t\t\"type\": \"object\"\n\t\t}\n\t},\n\t\"required\": [\n\t\t\"schema\"\n\t]\n}"
+  },
+  "image": {
+    "templateType": "json",
+    "template": "{\n  \n}\n"
+  },
+  "aggregate": {
+    "templateType": "json",
+    "template": "{\n  \"identifier\": \"\"\n}",
+    "templateSchema": "{\n\t\"type\": \"object\",\n\t\"properties\": {\n\t\t\"identifier\": {\n\t\t\t\"type\": \"string\"\n\t\t},\n\t\t\"stream\": {\n\t\t\t\"type\": \"string\"\n\t\t}\n\t},\n\t\"required\": [\n\t\t\"identifier\"\n\t]\n}"
+  }
+}

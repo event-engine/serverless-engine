@@ -1,0 +1,73 @@
+{
+    "cli": "nx",
+    "id": "process-manager",
+    "type": "object",
+    "properties": {
+        "service": {
+            "type": "string",
+            "description": "Service name",
+            "x-prompt": "What is the name of the service?",
+            "$default": {
+                "$source": "argv",
+                "index": 0
+            }
+        },
+        "name": {
+            "type": "string",
+            "description": "Process manager name",
+            "x-prompt": "What is the name of the process manager?",
+            "$default": {
+                "$source": "argv",
+                "index": 1
+            }
+        },
+        "event": {
+            "type": "string",
+            "description": "Event name",
+            "x-prompt": "What is the name of the event (incl. its service)?",
+            "$default": {
+                "$source": "argv",
+                "index": 2
+            }
+        },
+        "isPublicEvent": {
+            "type": "string",
+            "description": "Is public event",
+            "x-prompt": {
+                "message": "Is it a public event?",
+                "type": "list",
+                "items": [
+                    {
+                        "value": "y",
+                        "label": "Yes"
+                    },
+                    {
+                        "value": "n",
+                        "label": "No"
+                    }
+                ]
+            },
+            "$default": {
+                "$source": "argv",
+                "index": 3
+            }
+        },
+        "aggregate": {
+            "type": "string",
+            "description": "Aggregate name",
+            "x-prompt": "What is the name of the event recording aggregate (leave empty if public event)?",
+            "$default": {
+                "$source": "argv",
+                "index": 4
+            },
+            "default": "-"
+        }
+    },
+    "required": [
+        "service",
+        "name",
+        "event",
+        "isPublicEvent",
+        "aggregate"
+    ]
+}

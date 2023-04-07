@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:14.3
+    ports:
+      - 5432:5432
+    volumes:
+      - ./env/docker/postgres/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: "app"
+      POSTGRES_USER: "dev"
+      POSTGRES_PASSWORD: "dev"
+    command: "-c 'max_connections=200'"
+
+  postgres-test:
+    image: postgres:14.3
+    ports:
+      - 5433:5432
+    volumes:
+      - postgres-test-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: "test"
+      POSTGRES_USER: "dev"
+      POSTGRES_PASSWORD: "dev"
+    command: "-c 'max_connections=200'"
+
+  keycloak:
+    build:
+      context: ./env/docker/keycloak
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    environment:
+      #KEYCLOAK_USER: dev
+      #KEYCLOAK_PASSWORD: dev
+      KC_DB_USERNAME: dev
+      KC_DB_PASSWORD: dev
+      KC_DB_URL_PORT: 5432
+      KC_DB_URL_HOST: postgres
+      #KC_LOG_LEVEL: info
+      KC_HOSTNAME: localhost
+      KC_HOSTNAME_PORT: 8080
+
+      DB_VENDOR: POSTGRES
+      #DB_ADDR: postgres
+      DB_DATABASE: keycloak
+      #DB_USER: dev
+      DB_SCHEMA: public
+      #DB_PASSWORD: dev
+      PROXY_ADDRESS_FORWARDING: "true"
+    depends_on:
+      - postgres
+
+#
+# [ volumes definition ]
+#
+# creates Docker volumes which can be mounted by other containers too e.g. for backup
+#
+volumes:
+  postgres-data:
+    driver: local
+  postgres-test-data:
+    driver: local

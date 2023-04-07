@@ -1,0 +1,75 @@
+name: Deploy Serverless
+
+on:
+#  pull_request:
+#    branches: [ main ]
+#    types: [opened, closed]
+  workflow_dispatch:
+
+env:
+  NODE_ENV: stg
+  DB_HOST: ${{ vars.DB_HOST }}
+  DB_USER: ${{ vars.DB_USER }}
+  DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+    env:
+      NODE_ENV: test
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      #      - name: lint
+      #        run: npm run lint:affected
+
+      - name: test
+        run: npm run test:affected
+
+  Deploy:
+    if: github.event.pull_request.merged || github.event_name == 'workflow_dispatch'
+    needs: Test
+    runs-on: ubuntu-latest
+    env:
+      NODE_ENV: stg
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      #      - name: lint
+      #        run: npm run lint:affected
+
+      # - name: test
+      #  run:  npm run test:affected
+
+      - name: prepare db script
+        run: npx nx preparedb core
+
+      - name: deploy to staging
+        run:  npm run deploy:affected

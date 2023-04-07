@@ -1,0 +1,8 @@
+export interface <%= className %> {
+    <%= identifier %>: string;
+}
+
+export const make<%= className %> = (state: Partial<<%= className %>>): <%= className %> => {
+  // upcast state if needed
+  return state as <%= className %>;
+}

@@ -1,0 +1,10 @@
+import {<%= aggregate.className %>} from "../<%= aggregate.fileName %>";
+import {Event} from "@app/messaging/event";
+import {<%= className %>} from "../events/<%= fileName %>";
+
+export const apply<%= className %> = (state: <%= aggregate.className %>, event: Event<<%= className %>>): <%= aggregate.className %> => {
+  return {
+    ...state,
+    ...event.payload
+  }
+}

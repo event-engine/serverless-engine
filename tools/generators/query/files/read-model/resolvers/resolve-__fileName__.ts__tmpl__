@@ -1,0 +1,11 @@
+import {<%= className %>} from "../queries/<%= fileName %>";
+import {<%= returnType.className %>, <%= returnType.propertyName %>} from "../types<%= returnTypePath %>";
+import {Query} from "@app/messaging/query";
+import {getConfiguredDocumentStore} from "@app/core/configuredDocumentStore";
+
+export const resolve<%= className %> = async (query: Query<<%= className %>>): Promise<<%= returnType.className %>> => {
+  const ds = getConfiguredDocumentStore();
+
+  // @TODO: perform query
+  // @TODO: return <%= returnType.propertyName %>(result);
+}

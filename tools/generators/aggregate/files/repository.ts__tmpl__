@@ -1,0 +1,22 @@
+import {AggregateRepository} from "@app/infrastructure/AggregateRepository";
+import applyFunctions from "./reducers";
+import {<%= className %>, make<%= className %>} from "./<%= fileName %>";
+import {WRITE_MODEL_STREAM} from "@app/core/configuredEventStore";
+import {getConfiguredMultiModelStore} from "@app/core/configuredMultiModelStore";
+export const <%= constantName %>_COLLECTION = '<%= lowerConstantName %>_collection';
+export const AGGREGATE_TYPE = '<%= service %>.<%= className %>';
+export const AGGREGATE_IDENTIFIER = '<%= identifier %>';
+
+const store = getConfiguredMultiModelStore();
+
+const repository = new AggregateRepository<<%= className %>>(
+  store,
+  WRITE_MODEL_STREAM,
+  <%= constantName %>_COLLECTION,
+  AGGREGATE_TYPE,
+  AGGREGATE_IDENTIFIER,
+  applyFunctions,
+  make<%= className %>
+);
+
+export default repository;

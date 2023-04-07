@@ -1,0 +1,40 @@
+{
+  "root": "services/core",
+  "projectType": "application",
+  "sourceRoot": "services/core/src",
+  "targets": {
+    "deploy": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "cwd": "services/core",
+        "color": true,
+        "command": "sls deploy --verbose"
+      }
+    },
+    "preparedb": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "cwd": "services/core",
+        "color": true,
+        "command": "npx ts-node -r tsconfig-paths/register preparedb.ts"
+      }
+    },
+    "testdb": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "cwd": "services/core",
+        "color": true,
+        "command": "npx ts-node -r tsconfig-paths/register testdb.ts"
+      }
+    },
+    "remove": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "cwd": "services/core",
+        "color": true,
+        "command": "sls remove"
+      }
+    }
+  },
+  "tags": ["services"]
+}

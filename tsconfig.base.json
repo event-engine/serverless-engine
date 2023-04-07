@@ -1,0 +1,30 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "strict": true,
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "importHelpers": false,
+    "target": "ES2020",
+    "module": "commonjs",
+    "lib": ["esnext"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@app/auth/*": ["libs/auth/src/lib/*"],
+      "@app/core/*": ["services/core/src/*"],
+      "@app/env": ["environments/environment.serverless.ts"],
+      "@app/http/*": ["libs/http/src/lib/*"],
+      "@app/infrastructure/*": ["libs/infrastructure/src/lib/*"],
+      "@app/messaging/*": ["libs/messaging/src/lib/*"]
+    }
+  },
+  "exclude": ["node_modules", "data"]
+}

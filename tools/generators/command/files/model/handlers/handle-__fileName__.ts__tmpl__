@@ -1,0 +1,8 @@
+import {Command} from "@app/messaging/command";
+import {<%= className %>} from "../commands/<%= fileName %>";
+import {Event} from "@app/messaging/event";
+import {<%= aggregate.className %>} from "../<%= aggregate.fileName %>";
+
+export const handle<%= className %> = async function* (state: <% if(newAggregate) { %>Partial<<%= aggregate.className %>><% } else { %><%= aggregate.className %><% } %>, command: Command<<%= className %>>): AsyncGenerator<Event> {
+  // yield __event(command.payload);
+}

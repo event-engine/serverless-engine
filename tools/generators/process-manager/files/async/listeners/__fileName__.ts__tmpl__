@@ -1,0 +1,11 @@
+import {validate} from "@app/infrastructure/EventDispatcher";
+import {Event} from "@app/messaging/event";
+import {<%= event.className %>, <%= event.propertyName %>} from <% if(isPublicEvent) { %>"@app/<%= service.fileName %>/async/consuming/<%= event.fileName %>";
+<% } else { %>"@app/<%= service.fileName %>/model/<%= aggregate.fileName %>/events/<%= event.fileName %>";<% } %>
+
+const listener = async (event: Event<<%= event.className %>>): Promise<boolean> => {
+  // @TODO handle event, e.g. dispatch command or call external service
+  return true;
+}
+
+export const <%= propertyName %> = validate(listener, <%= event.propertyName %>);

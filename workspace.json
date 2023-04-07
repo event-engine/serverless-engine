@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "projects": {
+    "core": "services/core",
+    "http": "libs/http",
+    "infrastructure": "libs/infrastructure",
+    "messaging": "libs/messaging"
+  }
+}

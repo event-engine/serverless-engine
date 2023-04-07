@@ -1,0 +1,21 @@
+import {DeepReadonly} from "json-schema-to-ts/lib/types/type-utils/readonly";
+import {FromSchema} from "json-schema-to-ts";
+import {makeEvent} from "@app/messaging/event";
+import {Writable} from "json-schema-to-ts/lib/types/type-utils";
+import definitions from "@app/<%= service.fileName %>/read-model/types/definitions";
+import {references} from "@app/<%= service.fileName %>/read-model/types/references";
+
+export const <%= className %>Schema = <%- toJSON(schema) %> as const;
+
+export type <%= className %> = DeepReadonly<FromSchema<
+  typeof <%= className %>Schema,
+  {references: references}
+>>;
+
+export const <%= propertyName %> = makeEvent<<%= className %>>(
+  '<%= producingService %>.<%= className %>',
+  <%= className %>Schema as Writable<typeof <%= className %>Schema>,
+  definitions,
+  true,
+  '<%= version %>'
+);

@@ -1,0 +1,39 @@
+{
+    "cli": "nx",
+    "id": "aggregate",
+    "type": "object",
+    "properties": {
+        "service": {
+            "type": "string",
+            "description": "Service name",
+            "x-prompt": "What is the name of the service?",
+            "$default": {
+                "$source": "argv",
+                "index": 0
+            }
+        },
+        "name": {
+            "type": "string",
+            "description": "Aggregate name",
+            "x-prompt": "What is the name of the aggregate?",
+            "$default": {
+                "$source": "argv",
+                "index": 1
+            }
+        },
+        "identifier": {
+            "type": "string",
+            "description": "Aggregate identifier",
+            "x-prompt": "What is the name of the identifier of the aggregate?",
+            "$default": {
+                "$source": "argv",
+                "index": 2
+            }
+        }
+    },
+    "required": [
+        "service",
+        "name",
+        "identifier"
+    ]
+}
