@@ -2991,7 +2991,7 @@ App	60	300	300	\N	\N	\N	t	f	0	\N	App	0	\N	f	f	f	f	EXTERNAL	1800	36000	f	f	399902
 --
 
 COPY public.realm_attribute (name, realm_id, value) FROM stdin;
-_browser_header.contentSecurityPolicyReportOnly	master
+_browser_header.contentSecurityPolicyReportOnly	master 
 _browser_header.xContentTypeOptions	master	nosniff
 _browser_header.xRobotsTag	master	none
 _browser_header.xFrameOptions	master	SAMEORIGIN
