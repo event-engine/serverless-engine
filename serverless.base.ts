@@ -24,7 +24,7 @@ export const baseServerlessConfig: Partial<Serverless> = {
     individually: true,
     excludeDevDependencies: true
   },
-  plugins: ['serverless-esbuild', 'serverless-offline', 'serverless-lift', 'serverless-localstack'],
+  plugins: ['serverless-esbuild', 'serverless-offline', 'serverless-lift'],
   custom: {
     esbuild: {
       bundle: true,
