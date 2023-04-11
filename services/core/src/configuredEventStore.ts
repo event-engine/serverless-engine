@@ -22,21 +22,7 @@ export const getConfiguredEventStore = (): EventStore => {
     }
 
     // Avoid circular deps in listeners
-      const streamListener = new InMemoryStreamListenerQueue(es, PUBLIC_STREAM);
-
-    streamListener.attachConsumer(async (evt): Promise<boolean> => {
-      if(!fleetManagementDispatch) {
-        fleetManagementDispatch = (await import('@app/fleet-management/async/listeners')).default;
-      }
-
-      if(!subscriptionsDispatch) {
-        subscriptionsDispatch = (await import('@app/subscriptions/async/listeners')).default;
-      }
-
-      const successFmt = await fleetManagementDispatch(evt);
-      const successSubscriptions = await subscriptionsDispatch(evt);
-      return successFmt && successSubscriptions;
-    });
+    const streamListener = new InMemoryStreamListenerQueue(es, PUBLIC_STREAM);
 
     streamListener.startProcessing();
   }
