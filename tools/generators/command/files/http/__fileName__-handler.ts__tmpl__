@@ -13,7 +13,7 @@ try {
     return httpError("Request body is empty", {statusCode: 400});
   }
 
-  const success = await dispatch(<%= propertyName %>(event.body, {userId: context.user.id}));
+  const success = await dispatch(<%= propertyName %>(event.body, {userId: context.user?.id}));
 
   return httpResponse({
     success,
