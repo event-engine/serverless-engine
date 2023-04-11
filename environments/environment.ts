@@ -21,5 +21,8 @@ export const env: Environment = {
   },
   documentStore: {
     adapter: "postgres"
+  },
+  authentication: {
+    disabled: true
   }
 };
