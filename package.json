@@ -43,6 +43,7 @@
   "devDependencies": {
     "@aws-sdk/types": "3.55.0",
     "@jest/transform": "27.5.1",
+    "nx": "15.6.3",
     "@nrwl/cli": "14.1.2",
     "@nrwl/devkit": "14.1.2",
     "@nrwl/eslint-plugin-nx": "14.1.2",

@@ -37,7 +37,6 @@
 - Run `cd my-project`
 - Run `cp .env.dist .env`
 - Run `npm install`
-- Run `npm install -g nx`
 - Run `docker-compose up -d` ( Check that it works by going to http://localhost:8080/auth/admin, login: dev:dev)
 - Run `nx preparedb core`
 - Update the `environment` files based on your configuration
